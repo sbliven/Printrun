@@ -16,6 +16,7 @@
 # along with Printrun.  If not, see <http://www.gnu.org/licenses/>.
 
 import wx, random
+random.seed(123)
 from math import log10,floor,ceil
 
 from bufferedcanvas import *
@@ -57,12 +58,12 @@ class Graph(BufferedCanvas):
         gc = wx.GraphicsContext.Create(dc)
 
     def updateTemperatures(self, event):
-        self.AddBedTemperature(self.bedtemps[-1])
-        self.AddBedTargetTemperature(self.bedtargettemps[-1])
-        self.AddExtruder0Temperature(self.extruder0temps[-1])
-        self.AddExtruder0TargetTemperature(self.extruder0targettemps[-1])
-        self.AddExtruder1Temperature(self.extruder1temps[-1])
-        self.AddExtruder1TargetTemperature(self.extruder1targettemps[-1])
+        self.AddBedTemperature(self.bedtemps[-1]+random.uniform(-5,5))
+        self.AddBedTargetTemperature(self.bedtargettemps[-1]+random.uniform(-5,5))
+        self.AddExtruder0Temperature(self.extruder0temps[-1]+random.uniform(-5,5))
+        self.AddExtruder0TargetTemperature(self.extruder0targettemps[-1]+random.uniform(-5,5))
+        self.AddExtruder1Temperature(self.extruder1temps[-1]+random.uniform(-5,5))
+        self.AddExtruder1TargetTemperature(self.extruder1targettemps[-1]+random.uniform(-5,5))
         if self.rescaley:
             self._ybounds.update()
         self.Refresh()
